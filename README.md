@@ -11,7 +11,14 @@ Summary: A contraction optimizer for the NumPy Einsum function.
 
 Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is only optimized to contract two terms at a time resulting in non-optimal scaling.
 For example, let us examine the following index transformation: `M_{pqrs} = C_{pi} C_{qj} I_{ijkl} C_{rk} C_{sl}`
-We can then develop two seperate implementations that produce the same result: ```python N = 10 C = np.random.rand(N, N) I = np.random.rand(N, N, N, N)
+
+We can then develop two seperate implementations that produce the same result:
+```python
+
+N = 10
+C = np.random.rand(N, N)
+I = np.random.rand(N, N, N, N)
+
 def naive(I, C):
     return np.einsum('pi,qj,ijkl,rk,sl->pqrs', C, C, I, C, C)
 
@@ -22,13 +29,23 @@ def optimized(I, C):
     K = np.einsum('sl,pqrl->pqrs', C, K)
     return K
 ```
+
 The einsum function does not consider building intermediate arrays; therefore, helping einsum out by building these intermediate arrays can result in a considerable cost savings even for small N (N=10):
-```python np.allclose(naive(I, C), optimized(I, C)) True
+``` python
+np.allclose(naive(I, C), optimized(I, C))
+True
 %timeit naive(I, C) 1 loops, best of 3: 934 ms per loop
-%timeit optimized(I, C) 1000 loops, best of 3: 527 µs per loop ```
+%timeit optimized(I, C) 1000 loops, best of 3: 527 µs per loop
+```
+
 A 2000 fold speed up for 4 extra lines of code! This contraction can be further complicated by considering that the shape of the C matrices need not be the same, in this case the ordering in which the indices are transformed matters greatly. Logic can be built that optimizes the ordering; however, this is a lot of time and effort for a single expression. The opt_einsum package is a drop in replacement for the np.einsum function and can handle all of this logic for you:
-```python from opt_einsum import contract
-%timeit contract('pi,qj,ijkl,rk,sl->pqrs', C, C, I, C, C) 1000 loops, best of 3: 324 µs per loop ```
+
+```
+python from opt_einsum import contract
+%timeit contract('pi,qj,ijkl,rk,sl->pqrs', C, C, I, C, C)
+1000 loops, best of 3: 324 µs per loop
+```
+
 The above will automatically find the optimal contraction order, in this case identical to that of the optimized function above, and compute the products for you. In this case, it even uses `np.dot` under the hood to exploit any vendor BLAS functionality that your NumPy build has!
 
 
