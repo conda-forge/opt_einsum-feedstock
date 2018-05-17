@@ -1,6 +1,6 @@
 {% set name = "opt_einsum" %}
-{% set version = "1.0.1" %}
-{% set sha256 = "247794e7f97ab451ea8f24245fd84174197bec76bd96a4a42b5678884e19e147" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "6ab5f32b6bb2004b96105188b6bd38da278d89e8ded3ec62ff0f662a94270db2" %}
 
 package:
   name: {{ name|lower }}
@@ -37,7 +37,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'A contraction optimizer for the NumPy Einsum function.'
+  summary: 'A contraction order optimizer for the NumPy Einsum function and other backends.'
 
   description: >
     Einsum is a very powerful function for contracting tensors of arbitrary dimension and index.
@@ -81,6 +81,7 @@ about:
     A 2000 fold speed up for 4 extra lines of code!
     This contraction can be further complicated by considering that the shape of the C matrices need not be the same, in this case the ordering in which the indices are transformed matters greatly.
     Logic can be built that optimizes the ordering; however, this is a lot of time and effort for a single expression.
+
     The opt_einsum package is a drop in replacement for the np.einsum function and can handle all of this logic for you:
     
     ```python
