@@ -24,13 +24,11 @@ requirements:
     - numpy
 
 test:
-  source_files:
-    - test
   requires:
     - python
     - pytest
   commands:
-    - py.test -v ./test
+    - py.test --pyargs opt_einsum
 
 about:
   home: http://github.com/dgasmith/opt_einsum
