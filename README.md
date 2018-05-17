@@ -7,60 +7,25 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: A contraction optimizer for the NumPy Einsum function.
+Summary: A contraction order optimizer for the NumPy Einsum function and other backends.
 
-Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is only optimized to contract two terms at a time resulting in non-optimal scaling.
-For example, let us examine the following index transformation: `M_{pqrs} = C_{pi} C_{qj} I_{ijkl} C_{rk} C_{sl}`
-
-We can then develop two seperate implementations that produce the same result:
-```python
-
-N = 10
-C = np.random.rand(N, N)
-I = np.random.rand(N, N, N, N)
-
-def naive(I, C):
-    return np.einsum('pi,qj,ijkl,rk,sl->pqrs', C, C, I, C, C)
-
-def optimized(I, C):
-    K = np.einsum('pi,ijkl->pjkl', C, I)
-    K = np.einsum('qj,pjkl->pqkl', C, K)
-    K = np.einsum('rk,pqkl->pqrl', C, K)
-    K = np.einsum('sl,pqrl->pqrs', C, K)
-    return K
-```
-
-The einsum function does not consider building intermediate arrays; therefore, helping einsum out by building these intermediate arrays can result in a considerable cost savings even for small N (N=10):
-
-``` python
-np.allclose(naive(I, C), optimized(I, C))
-True
-%timeit naive(I, C) 1 loops, best of 3: 934 ms per loop
-%timeit optimized(I, C) 1000 loops, best of 3: 527 µs per loop
-```
-
-A 2000 fold speed up for 4 extra lines of code! This contraction can be further complicated by considering that the shape of the C matrices need not be the same, in this case the ordering in which the indices are transformed matters greatly. Logic can be built that optimizes the ordering; however, this is a lot of time and effort for a single expression. The opt_einsum package is a drop in replacement for the np.einsum function and can handle all of this logic for you:
-
-```
-python from opt_einsum import contract
-%timeit contract('pi,qj,ijkl,rk,sl->pqrs', C, C, I, C, C)
-1000 loops, best of 3: 324 µs per loop
-```
-
-The above will automatically find the optimal contraction order, in this case identical to that of the optimized function above, and compute the products for you. In this case, it even uses `np.dot` under the hood to exploit any vendor BLAS functionality that your NumPy build has!
+Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
+See the docs for more information: http://optimized-einsum.readthedocs.io/en/latest/?badge=latest
 
 
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/opt_einsum-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/opt_einsum-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/opt_einsum-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/opt_einsum-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/opt_einsum-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/opt-einsum-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/opt_einsum-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/opt_einsum-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/opt_einsum-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/opt_einsum-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/opt_einsum-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/opt-einsum-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/opt_einsum/badges/version.svg)](https://anaconda.org/conda-forge/opt_einsum)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/opt_einsum/badges/downloads.svg)](https://anaconda.org/conda-forge/opt_einsum)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-opt_einsum-green.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) |
 
 Installing opt_einsum
 =====================
@@ -105,6 +70,7 @@ To manage the continuous integration and simplify feedstock maintenance
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
+For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
