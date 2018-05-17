@@ -31,6 +31,7 @@ def optimized(I, C):
 ```
 
 The einsum function does not consider building intermediate arrays; therefore, helping einsum out by building these intermediate arrays can result in a considerable cost savings even for small N (N=10):
+
 ``` python
 np.allclose(naive(I, C), optimized(I, C))
 True
