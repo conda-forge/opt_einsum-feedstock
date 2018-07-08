@@ -16,9 +16,8 @@ See the docs for more information: http://optimized-einsum.readthedocs.io/en/lat
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/opt_einsum-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/opt_einsum-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/opt_einsum-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/opt_einsum-feedstock)
-[![Windows](https://img.shields.io/appveyor/ci/conda-forge/opt_einsum-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/opt-einsum-feedstock/branch/master)
+All platforms:
+[![noarch](https://img.shields.io/circleci/project/github/conda-forge/opt_einsum-feedstock/master.svg?label=noarch)](https://circleci.com/gh/conda-forge/opt_einsum-feedstock)
 
 Current release info
 ====================
