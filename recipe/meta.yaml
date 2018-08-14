@@ -1,6 +1,6 @@
 {% set name = "opt_einsum" %}
-{% set version = "2.0.1" %}
-{% set sha256 = "a5b65c503d414f93d175033fbc63bbf564190d5eff7b8e4a30377a5ecaca194c" %}
+{% set version = "2.1.1" %}
+{% set sha256 = "5a66b67a4acdf4eb694bc9ba1b3af84f5fb98aa789a85093a3b984b69a880cfc" %}
 
 package:
   name: {{ name|lower }}
