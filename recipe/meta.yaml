@@ -1,6 +1,6 @@
 {% set name = "opt_einsum" %}
-{% set version = "2.3.2" %}
-{% set sha256 = "0aa6f1b28ee97cd367ef19599c535d248b7b7c087add69fde29a4b7c74d50fa1" %}
+{% set version = "3.0.0" %}
+{% set sha256 = "4fcccd489c4a77a76525a291fb25a0aee3f591d525b6f6ae17f774737551dd10" %}
 
 package:
   name: {{ name|lower }}
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 0
   script: python setup.py install --single-version-externally-managed --record record.txt
 
 requirements:
