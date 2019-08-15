@@ -17,18 +17,18 @@ build:
 
 requirements:
   build:
-    - python
+    - python >=3.5
     - setuptools
   run:
-    - python
+    - python >=3.5
     - numpy
 
 test:
   requires:
-    - python
+    - python >=3.5
     - pytest
   commands:
-    - py.test --pyargs opt_einsum
+    - pytest --pyargs opt_einsum
 
 about:
   home: http://github.com/dgasmith/opt_einsum
