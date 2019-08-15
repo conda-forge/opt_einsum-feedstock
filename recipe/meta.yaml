@@ -36,14 +36,14 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'A contraction order optimizer for the NumPy Einsum function and other backends.'
+  summary: 'Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.'
 
   description: >
     Einsum is a very powerful function for contracting tensors of arbitrary dimension and index.
-    However, it is only optimized to contract two terms at a time resulting in non-optimal scaling.
+    However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling.
     This package optimizes the contraction order for arbitrarily large speedups.
 
-    See the docs for more information: http://optimized-einsum.readthedocs.io/en/latest/?badge=latest
+    See the docs for more information: http://optimized-einsum.readthedocs.io
     
   dev_url: https://github.com/dgasmith/opt_einsum
 
