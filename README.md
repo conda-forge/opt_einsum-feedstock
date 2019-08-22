@@ -7,10 +7,10 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: A contraction order optimizer for the NumPy Einsum function and other backends.
+Summary: Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.
 
-Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
-See the docs for more information: http://optimized-einsum.readthedocs.io/en/latest/?badge=latest
+Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
+See the docs for more information: http://optimized-einsum.readthedocs.io
 
 
 Current build status
