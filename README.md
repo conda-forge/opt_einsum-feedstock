@@ -5,7 +5,7 @@ Home: http://github.com/dgasmith/opt_einsum
 
 Package license: MIT
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.
 

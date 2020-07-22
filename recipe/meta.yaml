@@ -1,6 +1,6 @@
 {% set name = "opt_einsum" %}
-{% set version = "3.2.1" %}
-{% set sha256 = "ae8a8411a760c0da8e32a15c6325a00a85bb4d39c1cd3ed501da0ef0e964137f" %}
+{% set version = "3.3.0" %}
+{% set sha256 = "a748fdbccfce5af420ea56f8e2c51a6dc9e8774afd9179cb8addfab159b7b33c" %}
 
 package:
   name: {{ name|lower }}
@@ -39,8 +39,7 @@ about:
   summary: Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.
 
   description: >
-    Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at
-    a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
+    Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
 
     See the docs for more information: http://optimized-einsum.readthedocs.io
 
