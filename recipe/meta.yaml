@@ -1,25 +1,24 @@
 {% set name = "opt_einsum" %}
 {% set version = "3.3.0" %}
-{% set sha256 = "a748fdbccfce5af420ea56f8e2c51a6dc9e8774afd9179cb8addfab159b7b33c" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/dgasmith/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549
 
 build:
   noarch: python
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  number: 1
+  script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
-  build:
+  host:
     - python >=3.5
     - setuptools
+    - pip
   run:
     - python >=3.5
     - numpy
@@ -28,8 +27,10 @@ test:
   requires:
     - python >=3.5
     - pytest
+    - pip
   commands:
     - pytest --pyargs opt_einsum
+    - pip check
 
 about:
   home: http://github.com/dgasmith/opt_einsum
@@ -49,3 +50,4 @@ extra:
   recipe-maintainers:
     - dgasmith
     - loriab
+    - xhochy
