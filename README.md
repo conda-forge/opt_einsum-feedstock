@@ -1,11 +1,11 @@
-About opt_einsum
-================
+About opt_einsum-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/opt_einsum-feedstock/blob/main/LICENSE.txt)
 
 Home: http://github.com/dgasmith/opt_einsum
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/opt_einsum-feedstock/blob/master/LICENSE.txt)
 
 Summary: Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with contraction order optimization.
 
@@ -21,8 +21,8 @@ Current build status
 
 <table><tr><td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=729&branchName=master">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opt_einsum-feedstock?branchName=master">
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=729&branchName=main">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/opt_einsum-feedstock?branchName=main">
       </a>
     </td>
   </tr>
@@ -33,6 +33,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-opt--einsum-green.svg)](https://anaconda.org/conda-forge/opt-einsum) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/opt-einsum.svg)](https://anaconda.org/conda-forge/opt-einsum) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/opt-einsum.svg)](https://anaconda.org/conda-forge/opt-einsum) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/opt-einsum.svg)](https://anaconda.org/conda-forge/opt-einsum) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-opt_einsum-green.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/opt_einsum.svg)](https://anaconda.org/conda-forge/opt_einsum) |
 
 Installing opt_einsum
@@ -42,25 +43,52 @@ Installing `opt_einsum` from the `conda-forge` channel can be achieved by adding
 
 ```
 conda config --add channels conda-forge
+conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `opt_einsum` can be installed with:
+Once the `conda-forge` channel has been enabled, `opt-einsum, opt_einsum` can be installed with `conda`:
 
 ```
-conda install opt_einsum
+conda install opt-einsum opt_einsum
 ```
 
-It is possible to list all of the versions of `opt_einsum` available on your platform with:
+or with `mamba`:
 
 ```
-conda search opt_einsum --channel conda-forge
+mamba install opt-einsum opt_einsum
+```
+
+It is possible to list all of the versions of `opt-einsum` available on your platform with `conda`:
+
+```
+conda search opt-einsum --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search opt-einsum --channel conda-forge
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search opt-einsum --channel conda-forge
+
+# List packages depending on `opt-einsum`:
+mamba repoquery whoneeds opt-einsum --channel conda-forge
+
+# List dependencies of `opt-einsum`:
+mamba repoquery depends opt-einsum --channel conda-forge
 ```
 
 
 About conda-forge
 =================
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
+[![Powered by
+NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -70,10 +98,12 @@ for each of the installable packages. Such a repository is known as a *feedstock
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
 available continuous integration services. Thanks to the awesome service provided by
-[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/)
-and [TravisCI](https://travis-ci.com/) it is possible to build and upload installable
-packages to the [conda-forge](https://anaconda.org/conda-forge)
-[Anaconda-Cloud](https://anaconda.org/) channel for Linux, Windows and OSX respectively.
+[Azure](https://azure.microsoft.com/en-us/services/devops/), [GitHub](https://github.com/),
+[CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
+[Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
+it is possible to build and upload installable packages to the
+[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
@@ -122,5 +152,6 @@ Feedstock Maintainers
 
 * [@dgasmith](https://github.com/dgasmith/)
 * [@loriab](https://github.com/loriab/)
+* [@pavelzw](https://github.com/pavelzw/)
 * [@xhochy](https://github.com/xhochy/)
 

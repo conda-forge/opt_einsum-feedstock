@@ -11,26 +11,40 @@ source:
 
 build:
   noarch: python
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 2
 
-requirements:
-  host:
-    - python >=3.5
-    - setuptools
-    - pip
-  run:
-    - python >=3.5
-    - numpy
+outputs:
+  - name: opt_einsum
+    script: build-base.sh
+    requirements:
+      host:
+        - python >=3.6
+        - setuptools
+        - pip
+        - versioneer
+      run:
+        - python >=3.6
+        - numpy
+    test:
+      requires:
+        - python >=3.6
+        - pytest
+        - pip
+      commands:
+        - pytest --pyargs opt_einsum
+        - pip check
+      imports:
+        - opt_einsum
 
-test:
-  requires:
-    - python >=3.5
-    - pytest
-    - pip
-  commands:
-    - pytest --pyargs opt_einsum
-    - pip check
+  - name: opt-einsum
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('opt_einsum', max_pin="x.x.x") }}
+    test:
+      imports:
+        - opt_einsum
 
 about:
   home: http://github.com/dgasmith/opt_einsum
@@ -51,3 +65,4 @@ extra:
     - dgasmith
     - loriab
     - xhochy
+    - pavelzw
