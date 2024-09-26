@@ -20,7 +20,7 @@ outputs:
       host:
         - python >=3.8
         - hatchling
-        - hatch-fancy-pypi-readme>=22.5.0
+        - hatch-fancy-pypi-readme
         - hatch-vcs
       run:
         - python >=3.8
