@@ -18,16 +18,15 @@ outputs:
     script: build-base.sh
     requirements:
       host:
-        - python >=3.6
-        - setuptools
-        - pip
-        - versioneer
+        - python >=3.8
+        - hatchling
+        - hatch-fancy-pypi-readme>=22.5.0
+        - hatch-vcs
       run:
-        - python >=3.6
-        - numpy
+        - python >=3.8
     test:
       requires:
-        - python >=3.6
+        - python >=3.8
         - pytest
         - pip
       commands:
@@ -56,7 +55,7 @@ about:
   description: >
     Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
 
-    See the docs for more information: http://optimized-einsum.readthedocs.io
+    See the docs for more information: dgasmith.github.io/opt_einsum/
 
   dev_url: https://github.com/dgasmith/opt_einsum
 
