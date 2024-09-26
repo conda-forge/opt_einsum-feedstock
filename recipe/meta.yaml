@@ -1,5 +1,5 @@
 {% set name = "opt_einsum" %}
-{% set version = "3.3.0" %}
+{% set version = "3.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,27 +7,27 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549
+  sha256: 96ca72f1b886d148241348783498194c577fa30a8faac108586b14f1ba4473ac
 
 build:
   noarch: python
-  number: 2
+  number: 0
 
 outputs:
   - name: opt_einsum
     script: build-base.sh
     requirements:
       host:
-        - python >=3.6
-        - setuptools
+        - python >=3.8
         - pip
-        - versioneer
+        - hatchling
+        - hatch-fancy-pypi-readme
+        - hatch-vcs
       run:
-        - python >=3.6
-        - numpy
+        - python >=3.8
     test:
       requires:
-        - python >=3.6
+        - python >=3.8
         - pytest
         - pip
       commands:
@@ -56,7 +56,7 @@ about:
   description: >
     Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
 
-    See the docs for more information: http://optimized-einsum.readthedocs.io
+    See the docs for more information: dgasmith.github.io/opt_einsum/
 
   dev_url: https://github.com/dgasmith/opt_einsum
 
