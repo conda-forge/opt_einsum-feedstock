@@ -12,7 +12,7 @@ Summary: Optimizing einsum functions in NumPy, Tensorflow, Dask, and more with c
 Development: https://github.com/dgasmith/opt_einsum
 
 Einsum is a very powerful function for contracting tensors of arbitrary dimension and index. However, it is typically only optimized to contract two terms at a time resulting in non-optimal scaling. This package optimizes the contraction order for arbitrarily large speedups.
-See the docs for more information: http://optimized-einsum.readthedocs.io
+See the docs for more information: dgasmith.github.io/opt_einsum/
 
 
 Current build status
