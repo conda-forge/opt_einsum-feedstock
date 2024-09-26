@@ -1,5 +1,5 @@
 {% set name = "opt_einsum" %}
-{% set version = "3.3.0" %}
+{% set version = "3.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 59f6475f77bbc37dcf7cd748519c0ec60722e91e63ca114e68821c0c54a46549
+  sha256: 96ca72f1b886d148241348783498194c577fa30a8faac108586b14f1ba4473ac
 
 build:
   noarch: python
-  number: 2
+  number: 0
 
 outputs:
   - name: opt_einsum
