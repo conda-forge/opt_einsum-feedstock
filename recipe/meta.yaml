@@ -19,6 +19,7 @@ outputs:
     requirements:
       host:
         - python >=3.8
+        - pip
         - hatchling
         - hatch-fancy-pypi-readme
         - hatch-vcs
