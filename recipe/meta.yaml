@@ -15,7 +15,7 @@ build:
 
 outputs:
   - name: opt_einsum
-    script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+    script: build-base.sh
     requirements:
       host:
         - python >=3.8
@@ -39,10 +39,6 @@ outputs:
     build:
       noarch: generic
     requirements:
-      host:
-        - python >=3.8
-      run:
-        - python >=3.8
       run:
         - {{ pin_subpackage('opt_einsum', max_pin="x.x.x") }}
     test:
