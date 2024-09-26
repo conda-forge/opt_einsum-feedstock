@@ -11,11 +11,11 @@ source:
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
   number: 0
 
 outputs:
   - name: opt_einsum
+    script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
     requirements:
       host:
         - python >=3.8
