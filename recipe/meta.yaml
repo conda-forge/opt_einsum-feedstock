@@ -39,6 +39,10 @@ outputs:
     build:
       noarch: generic
     requirements:
+      host:
+        - python >=3.8
+      run:
+        - python >=3.8
       run:
         - {{ pin_subpackage('opt_einsum', max_pin="x.x.x") }}
     test:
